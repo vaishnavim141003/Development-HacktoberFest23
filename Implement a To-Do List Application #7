@@ -1,0 +1,57 @@
+# Initialize an empty to-do list
+tasks = {}
+
+def display_tasks():
+    if not tasks:
+        print("No tasks in the to-do list.")
+    else:
+        print("To-Do List:")
+        for task, completed in tasks.items():
+            status = "✓" if completed else " "
+            print(f"[{status}] {task}")
+
+def add_task(task):
+    tasks[task] = False  # Mark the task as not completed by default
+
+def remove_task(task):
+    if task in tasks:
+        del tasks[task]
+        print(f"Task '{task}' removed.")
+    else:
+        print(f"Task '{task}' not found in the to-do list.")
+
+def check_off_task(task):
+    if task in tasks:
+        tasks[task] = True
+        print(f"Task '{task}' marked as completed.")
+    else:
+        print(f"Task '{task}' not found in the to-do list.")
+
+while True:
+    print("\nOptions:")
+    print("1. Display Tasks")
+    print("2. Add Task")
+    print("3. Remove Task")
+    print("4. Check Off Task")
+    print("5. Quit")
+
+    choice = input("Enter your choice (1/2/3/4/5): ")
+
+    if choice == "1":
+        display_tasks()
+    elif choice == "2":
+        task = input("Enter the task to add: ")
+        add_task(task)
+        print(f"Task '{task}' added to the to-do list.")
+    elif choice == "3":
+        task = input("Enter the task to remove: ")
+        remove_task(task)
+    elif choice == "4":
+        task = input("Enter the task to check off: ")
+        check_off_task(task)
+    elif choice == "5":
+        break
+    else:
+        print("Invalid choice. Please select a valid option.")
+
+print("Goodbye!")
